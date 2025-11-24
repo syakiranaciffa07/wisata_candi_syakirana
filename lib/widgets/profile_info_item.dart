@@ -23,33 +23,33 @@ class ProfileInfoItem extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width / 3,
+          width: MediaQuery.of(context).size.width / 3,
           child: Row(
             children: [
               Icon(icon, color: iconColor),
               const SizedBox(width: 8),
-              Text(label),
+              Text(
+                label,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
         ),
         Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(value),
-              if (showEditIcon)
-                IconButton(
-                  onPressed: onEditPressed,
-                  icon: const Icon(Icons.edit),
-                ),
-            ],
+          child: Text(
+            ': $value',
+            style: const TextStyle(fontSize: 18),
           ),
-        )
+        ),
+        if (showEditIcon)
+          InkWell(
+            onTap: onEditPressed,
+            child: const Icon(Icons.edit),
+          ),
       ],
     );
   }
 }
-
